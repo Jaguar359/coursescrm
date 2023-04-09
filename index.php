@@ -16,6 +16,14 @@ require_once 'settings/settings.php';
     </style>
 </head>
 <body>
+
+<?php
+$bd = new Bd;
+echo '<pre>';
+var_dump($bd->getUserData());
+?>
+
+
 <a href="users_add.php">Добавить</a><br>
 <table>
     <tr>
