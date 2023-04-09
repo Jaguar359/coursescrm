@@ -9,3 +9,4 @@ require_once "Frontender.php";
 require_once "Manager.php";
 require_once "ProjectManager.php";
 require_once "Bd.php";
+require_once "Login.php";

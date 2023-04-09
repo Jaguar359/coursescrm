@@ -1,10 +1,15 @@
 <?php
-require_once 'classes/classes.php';
 require_once 'settings/settings.php';
+require_once 'classes/classes.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
+    $login = new Login;
+    $login->login = htmlspecialchars($_POST['login']);
+    $login->password = htmlspecialchars($_POST['password']);
+
     echo '<pre>';
-    var_dump($_POST);
+    var_dump($login->auth());
+    var_dump($_SESSION);
     echo '</pre>';
 }
 ?>
@@ -35,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 <div class="container">
     <form action="login.php" method="POST">
         <input type="text" name="login" placeholder="Логин">
-        <input type="text" name="password" placeholder="Пароль">
+        <input type="password" name="password" placeholder="Пароль">
         <input type="submit" class="send-btn" value="Войти">
     </form>
 </div>

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // подключаемся к бд
 $mysql = new mysqli('localhost',
     'root', 'Bacs1906', 'lab5');
