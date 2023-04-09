@@ -16,13 +16,12 @@ class Bd
         // указываем, с какой таблицей будем работать
         $this->table_name = 'users';
         // формируем запрос в базу - выбрать все
-        $request          = "SELECT * FROM {$this->table_name}";
-        $result           = $this->mysql->query($request);
-        $data = [];
+        $request = "SELECT * FROM {$this->table_name} WHERE login = '{$this->login}'";
+        $result  = $this->mysql->query($request);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
+                $data = $row;
             }
         }
 

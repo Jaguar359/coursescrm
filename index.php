@@ -19,8 +19,10 @@ require_once 'settings/settings.php';
 
 <?php
 $bd = new Bd;
+$bd->login = 'admin';
+
 echo '<pre>';
-var_dump($bd->getUserData());
+print_r($bd->getUserData());
 ?>
 
 
