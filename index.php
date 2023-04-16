@@ -16,15 +16,17 @@ require_once 'classes/classes.php';
     </style>
 </head>
 <body>
+<?php require_once 'includes/nav.php'; ?>
+
+<h3>Сотрудники</h3>
 
 <?php
-$bd = new Bd;
-$bd->login = 'admin';
-
-echo '<pre>';
-print_r($bd->getUserData());
+//$bd = new Bd;
+//$bd->login = 'admin';
+//
+//echo '<pre>';
+//print_r($bd->getUserData());
 ?>
-
 
 <a href="users_add.php">Добавить</a><br>
 <table>
