@@ -47,4 +47,25 @@ class Bd
 
         return $data;
     }
+
+    /**
+     * @param $table_name
+     * @param $id
+     *
+     * @return array|null
+     */
+    public function getOne($table_name, $id)
+    {
+        // формируем запрос в базу - выбрать все
+        $request = "SELECT * FROM {$table_name} WHERE id = '{$id}'";
+        $result  = $this->mysql->query($request);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+
+        return $data;
+    }
 }

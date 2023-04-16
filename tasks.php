@@ -33,6 +33,7 @@ require_once 'classes/classes.php';
     <tr>
         <td>id</td>
         <td>Название</td>
+        <td>Создана</td>
         <td>Дедлайн</td>
     </tr>
     <?php
@@ -44,10 +45,16 @@ require_once 'classes/classes.php';
 //    var_dump($tasks_all);
 
     foreach ($tasks_all as $params){
+        $params['deadline'] = (int)$params['deadline'];
+        $params['date_start'] = (int)$params['date_start'];
+        $deadline = Time::toHuman($params['deadline']);
+        $date_start = Time::toHuman($params['date_start']);
+
         echo "<tr>";
         echo "<td>{$params['id']}</td>";
-        echo "<td>{$params['title']}</td>";
-        echo "<td>{$params['deadline']}</td>";
+        echo "<td><a href='tasks_view.php?id={$params['id']}'>{$params['title']}</a></td>";
+        echo "<td>{$date_start}</td>";
+        echo "<td>{$deadline}</td>";
         echo "</tr>";
     }
     ?>
