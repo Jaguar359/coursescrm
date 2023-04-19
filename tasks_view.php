@@ -60,21 +60,24 @@ $current_task = (new Bd)->getOne('tasks', $id);
         </tr>
         <tr>
             <td>Дата постановки</td>
-            <td><?=$current_task['date_start']?></td>
+            <td><?=Time::toHuman($current_task['date_start'])?></td>
         </tr>
         <tr>
             <td>Дата завершения</td>
-            <td><?=$current_task['date_end']?></td>
+            <td><?=Time::toHuman($current_task['date_end'])?></td>
         </tr>
         <tr>
             <td>Дедлайн</td>
-            <td><?=$current_task['deadline']?></td>
+            <td><?=Time::toHuman($current_task['deadline'])?></td>
         </tr>
         <tr>
             <td>Статус</td>
             <td><?=$current_task['status']?></td>
         </tr>
     </table>
+
+    <br>
+    <a href="tasks_edit.php?id=<?=$id?>">Редактирование</a>
 </div>
 </body>
 </html>
