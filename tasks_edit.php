@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <?php require_once 'includes/nav.php'; ?>
 <div class="container">
-    <a href="tasks.php">Вернуться</a><br><br>
+    <a href="tasks_view.php?id=<?=$current_task['id']?>">Вернуться</a><br><br>
     <form action="tasks_edit.php?id=<?=$current_task['id']?>" method="POST">
         <label>Название задачи</label>
         <input type="text" name="title" value="<?php echo $current_task['title']; ?>"><br>

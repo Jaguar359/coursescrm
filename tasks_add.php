@@ -70,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
+<?php require_once 'includes/nav.php'; ?>
 <div class="container">
     <a href="index.php">Вернуться</a><br><br>
     <form action="tasks_add.php" method="POST">

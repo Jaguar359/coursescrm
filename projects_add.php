@@ -5,18 +5,16 @@ require_once 'settings/settings.php';
 // если формат запроса = POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // подготавливаем переменные
-    $login = htmlspecialchars($_POST["login"]);
-    $pass = htmlspecialchars($_POST["pass"]);
-    $type = htmlspecialchars($_POST["type"]);
-    $status = 1;
-    $token = md5($login);
+    $name_project = htmlspecialchars($_POST["name_project"]);
+    $link         = htmlspecialchars($_POST["link"]);
+    $user_id      = 1;
 
     // сохраняем в базу
-    $mysql->query("INSERT INTO users (id, login, password, type, status, token)
-    VALUES (null, '{$login}', '{$pass}', '{$type}', '{$status}', {$token})");
+    $mysql->query("INSERT INTO projects (id, name_project, user_id, link)
+    VALUES (null, '{$name_project}', '{$user_id}', '{$link}')");
 
     // редирект на index.php
-    header("Location: index.php");
+    header("Location: projects.php");
 }
 ?>
 <html>
@@ -31,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         input {
             width: 100%;
             height: 40px;
-            padding: 5px;
+            padding: 5px 15px;
             border-radius: 10px;
             border: 1px solid #6f6f6f;
             margin-bottom: 15px;
@@ -41,9 +39,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background-color: #96c680;
             margin-top: 15px;
         }
-        select{
+
+        select {
             width: 100%;
             height: 40px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid #6f6f6f;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
             padding: 5px;
             border-radius: 10px;
             border: 1px solid #6f6f6f;
@@ -52,17 +60,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
+<?php require_once 'includes/nav.php'; ?>
 <div class="container">
     <a href="index.php">Вернуться</a><br><br>
-    <form action="users_add.php" method="POST">
-        <input type="text" name="login" placeholder="Логин">
-        <input type="password" name="password" placeholder="Пароль">
+    <form action="projects_add.php" method="POST">
+        <label>Название проекта</label>
+        <input type="text" name="name_project">
 
-        <select name="type">
-            <option value="backender">Backend-разработчик</option>
-            <option value="frontender">Frontend-разработчик</option>
-            <option value="client">Клиент</option>
-        </select>
+        <label>Ссылка</label>
+        <input type="text" name="link">
 
         <input type="submit" class="send-btn" value="Сохранить">
     </form>

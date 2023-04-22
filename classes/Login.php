@@ -24,13 +24,22 @@ class Login
         return false;
     }
 
+    /**
+     * Авторизация
+     *
+     * @return string
+     */
     public function auth()
     {
         if (isset($this->login) && mb_strlen($this->login) > 3 &&
             isset($this->password) && mb_strlen($this->password) > 3){
             if ($this->validate()){
-                $_SESSION['login'] = $this->login;
+                // шифрование
+                $token = md5($this->login);
 
+                // добавление сессий
+                $_SESSION['login'] = $this->login;
+                $_SESSION['token'] = $token;
             } else {
                 return 'err-validate';
             }

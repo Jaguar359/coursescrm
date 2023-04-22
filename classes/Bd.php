@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Класс для работы с БД
+ */
 class Bd
 {
     public $mysql;
@@ -34,6 +37,11 @@ class Bd
         return $data;
     }
 
+    /**
+     * Получить все
+     *
+     * @return array
+     */
     public function getAll()
     {
         $request = "SELECT * FROM {$this->table_name}";
@@ -49,6 +57,8 @@ class Bd
     }
 
     /**
+     * Получить одну
+     *
      * @param $table_name
      * @param $id
      *

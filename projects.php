@@ -28,7 +28,7 @@ require_once 'classes/classes.php';
 //print_r($bd->getUserData());
 ?>
 
-<a href="users_add.php">Добавить</a><br>
+<a href="projects_add.php">Добавить</a><br>
 <table>
     <tr>
         <td>id</td>
@@ -42,7 +42,7 @@ require_once 'classes/classes.php';
     foreach ($tasks_all as $params){
         echo "<tr>";
         echo "<td>{$params['id']}</td>";
-        echo "<td>{$params['name_project']}</td>";
+        echo "<td><a href='projects_view.php?id={$params['id']}'>{$params['name_project']}</a></td>";
         echo "</tr>";
     }
     ?>

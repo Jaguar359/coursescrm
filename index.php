@@ -27,7 +27,10 @@ require_once 'classes/classes.php';
 //echo '<pre>';
 //print_r($bd->getUserData());
 ?>
-
+<?php
+echo '<pre>';
+var_dump($_SESSION);
+?>
 <a href="users_add.php">Добавить</a><br>
 <table>
     <tr>
