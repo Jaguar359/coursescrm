@@ -5,18 +5,14 @@ require_once 'settings/settings.php';
 // если формат запроса = POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // подготавливаем переменные
-    $login = htmlspecialchars($_POST["login"]);
-    $pass = htmlspecialchars($_POST["pass"]);
-    $type = htmlspecialchars($_POST["type"]);
-    $status = 1;
-    $token = md5($login);
+    $title = htmlspecialchars($_POST["title"]);
 
     // сохраняем в базу
-    $mysql->query("INSERT INTO users (id, login, password, type, status, token)
-    VALUES (null, '{$login}', '{$pass}', '{$type}', '{$status}', '{$token}')");
+    $mysql->query("INSERT INTO user_types (id, title)
+    VALUES (null, '{$title}')");
 
     // редирект на index.php
-    header("Location: index.php");
+    header("Location: user_types.php");
 }
 ?>
 <html>
@@ -31,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         input {
             width: 100%;
             height: 40px;
-            padding: 5px;
+            padding: 5px 15px;
             border-radius: 10px;
             border: 1px solid #6f6f6f;
             margin-bottom: 15px;
@@ -41,9 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             background-color: #96c680;
             margin-top: 15px;
         }
-        select{
+
+        select {
             width: 100%;
             height: 40px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid #6f6f6f;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
             padding: 5px;
             border-radius: 10px;
             border: 1px solid #6f6f6f;
@@ -52,25 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-<?php require_once "includes/nav.php"; ?>
+<?php require_once 'includes/nav.php'; ?>
 <div class="container">
-    <a href="index.php">Вернуться</a><br><br>
-    <form action="users_add.php" method="POST">
-        <input type="text" name="login" placeholder="Логин">
-        <input type="password" name="password" placeholder="Пароль">
-
-        <select name="type">
-            <?php
-            $bd = new Bd;
-            $bd->table_name = 'user_types';
-            $types = $bd->getAll();
-
-            foreach ($types as $type){
-                echo "<option value='{$type['id']}'>{$type['title']}</option>";
-            }
-            ?>
-        </select>
-
+    <a href="user_types.php">Вернуться</a><br><br>
+    <form action="user_types_add.php" method="POST">
+        <label>Должность / тип сотрудника</label>
+        <input type="text" name="title">
         <input type="submit" class="send-btn" value="Сохранить">
     </form>
 </div>

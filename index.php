@@ -17,20 +17,7 @@ require_once 'classes/classes.php';
 </head>
 <body>
 <?php require_once 'includes/nav.php'; ?>
-
-<h3>Сотрудники</h3>
-
-<?php
-//$bd = new Bd;
-//$bd->login = 'admin';
-//
-//echo '<pre>';
-//print_r($bd->getUserData());
-?>
-<?php
-echo '<pre>';
-var_dump($_SESSION);
-?>
+<h3>Сотрудники</h3><br>
 <a href="users_add.php">Добавить</a><br>
 <table>
     <tr>
@@ -53,13 +40,9 @@ var_dump($_SESSION);
             echo "<td>{$row['id']}</td>";
             echo "<td>{$row['login']}</td>";
 
-            if ($row['type'] == 'backender'){
-                echo "<td>Бэкнэд разработчик</td>";
-            }
-
-            if ($row['type'] == 'client'){
-                echo "<td>Клиент</td>";
-            }
+            echo "<td>";
+            echo (new Bd)->getOne('user_types', $row['type'])['title'];
+            echo "</td>";
 
             echo "</tr>";
         }

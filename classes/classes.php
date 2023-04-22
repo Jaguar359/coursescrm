@@ -1,4 +1,5 @@
 <?php
+require_once "App.php";
 require_once "User.php";
 require_once "Worker.php";
 require_once "Admin.php";

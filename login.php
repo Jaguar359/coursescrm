@@ -7,11 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     $login->login = htmlspecialchars($_POST['login']);
     $login->password = htmlspecialchars($_POST['password']);
 
-    echo '<pre>';
-    var_dump($login->auth());
-    var_dump($_SESSION);
-    echo '</pre>';
+    if ($login->auth() == 'access'){
+        //header("Location: index.php");
+        echo '<meta http-equiv="refresh" content="0; url=index.php" />';
+    }
 }
+
 ?>
 <html>
 <head>
@@ -37,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     </style>
 </head>
 <body>
+<?php include_once "includes/nav.php"; ?>
 <div class="container">
     <form action="login.php" method="POST">
         <input type="text" name="login" placeholder="Логин">

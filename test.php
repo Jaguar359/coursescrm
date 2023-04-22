@@ -1,3 +1,3 @@
 <?php
-echo '<pre>';
-var_dump($_GET);
+require_once 'settings/settings.php';
+require_once 'classes/classes.php';

@@ -28,37 +28,21 @@ require_once 'classes/classes.php';
 //print_r($bd->getUserData());
 ?>
 
-<a href="tasks_add.php">Добавить</a><br>
+<a href="user_types_add.php">Добавить</a><br>
 <table>
     <tr>
         <td>id</td>
         <td>Название</td>
-        <td>Создана</td>
-        <td>Дедлайн</td>
     </tr>
     <?php
     $tasks = new Bd;
-    $tasks->table_name = 'tasks';
+    $tasks->table_name = 'user_types';
     $tasks_all = $tasks->getAll();
 
-//    echo '<pre>';
-//    var_dump($tasks_all);
-
     foreach ($tasks_all as $params){
-        if (mb_strlen($params['title']) < 1){
-            $params['title'] = '(не задано)';
-        }
-
-        $params['deadline'] = (int)$params['deadline'];
-        $params['date_start'] = (int)$params['date_start'];
-        $deadline = Time::toHuman($params['deadline']);
-        $date_start = Time::toHuman($params['date_start']);
-
         echo "<tr>";
         echo "<td>{$params['id']}</td>";
-        echo "<td><a href='tasks_view.php?id={$params['id']}'>{$params['title']}</a></td>";
-        echo "<td>{$date_start}</td>";
-        echo "<td>{$deadline}</td>";
+        echo "<td><a href='user_types_edit.php?id={$params['id']}'>{$params['title']}</a></td>";
         echo "</tr>";
     }
     ?>

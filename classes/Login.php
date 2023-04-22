@@ -40,6 +40,8 @@ class Login
                 // добавление сессий
                 $_SESSION['login'] = $this->login;
                 $_SESSION['token'] = $token;
+
+                return 'access';
             } else {
                 return 'err-validate';
             }
