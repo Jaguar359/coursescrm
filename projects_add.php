@@ -8,10 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name_project = htmlspecialchars($_POST["name_project"]);
     $link         = htmlspecialchars($_POST["link"]);
     $user_id      = 1;
+    $date_start = time();
+    $date_end = time() + 3600 * 24 * 30;
 
     // сохраняем в базу
-    $mysql->query("INSERT INTO projects (id, name_project, user_id, link)
-    VALUES (null, '{$name_project}', '{$user_id}', '{$link}')");
+    $mysql->query("INSERT INTO projects (id, name_project, user_id, link, date_start, date_end)
+    VALUES (null, '{$name_project}', '{$user_id}', '{$link}', '{$date_start}', '{$date_end}')");
 
     // редирект на index.php
     header("Location: projects.php");

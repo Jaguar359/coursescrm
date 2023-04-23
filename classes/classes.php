@@ -12,3 +12,4 @@ require_once "ProjectManager.php";
 require_once "Bd.php";
 require_once "Login.php";
 require_once "Time.php";
+require_once "GeneratorModel.php";
