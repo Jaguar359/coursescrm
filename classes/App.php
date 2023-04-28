@@ -28,4 +28,12 @@ class App
     {
         return User::isGuest();
     }
+
+    /**
+     * @return bool
+     */
+    public static function checkLoad()
+    {
+        return true;
+    }
 }

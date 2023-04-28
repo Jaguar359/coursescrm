@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+// отключение отображение всех (кроме фатальных) ошибок
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+
 // подключаемся к бд todo: удалить
 $mysql = new mysqli('localhost',
     'root', 'Bacs1906', 'lab5');

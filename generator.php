@@ -5,4 +5,4 @@ require_once 'classes/classes.php';
 $generator = new GeneratorModel;
 
 echo '<pre>';
-var_dump($generator->tasks());
+var_dump($generator->projects());

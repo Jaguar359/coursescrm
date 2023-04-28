@@ -78,4 +78,33 @@ class Bd
 
         return $data;
     }
+
+    /**
+     * @param $table_name
+     * @param $where
+     *
+     * @return array
+     */
+    public function specialQuery($table_name, $where)
+    {
+        $result_where = '';
+
+        foreach ($where as $where_key => $where_value){
+            $result_where .= "{$where_key} = {$where_value}, ";
+        }
+
+        $result_where = mb_substr($result_where, 0, -2);
+
+        $request = "SELECT * FROM {$table_name} WHERE {$result_where}";
+
+        $result  = $this->mysql->query($request);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+
+        return $data;
+    }
 }
