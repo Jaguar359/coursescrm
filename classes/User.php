@@ -15,8 +15,6 @@ class User
      */
     public static function isGuest(): bool
     {
-        session_start();
-
         if (isset($_SESSION['login'])) {
             return false;
         }

@@ -1,9 +1,9 @@
 <?php
-$dir   = '../classes';
+$dir   = 'classes';
 $files = scandir($dir);
 
 foreach ($files as $file) {
     if ($file != '.' and $file != '..' and $file != 'classes.php') {
-        require_once "{$file}";
+        require_once "{$dir}/{$file}";
     }
 }

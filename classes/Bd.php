@@ -90,10 +90,10 @@ class Bd
         $result_where = '';
 
         foreach ($where as $where_key => $where_value){
-            $result_where .= "{$where_key} = {$where_value}, ";
+            $result_where .= "{$where_key} = {$where_value} AND ";
         }
 
-        $result_where = mb_substr($result_where, 0, -2);
+        $result_where = mb_substr($result_where, 0, -5);
 
         $request = "SELECT * FROM {$table_name} WHERE {$result_where}";
 
