@@ -1,5 +1,5 @@
 <?php
 
-class Designer extends User
+class Designer
 {
 }

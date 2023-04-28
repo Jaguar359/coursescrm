@@ -1,5 +1,5 @@
 <?php
 
-class ProjectManager extends User
+class ProjectManager
 {
 }

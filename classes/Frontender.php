@@ -1,5 +1,5 @@
 <?php
 
-class Frontender extends Worker
+class Frontender
 {
 }

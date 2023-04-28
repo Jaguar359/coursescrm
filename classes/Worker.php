@@ -3,7 +3,7 @@
 /**
  * Класс Worker, наследуем от модели User
  */
-class Worker extends User
+class Worker
 {
     public $access;
     public $home_dir;

@@ -1,6 +1,6 @@
 <?php
 
-class Backender extends Worker
+class Backender
 {
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class Client extends User
+class Client
 {
     public $company_name;
     public $project_name;
