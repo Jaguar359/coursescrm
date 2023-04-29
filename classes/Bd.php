@@ -44,7 +44,7 @@ class Bd
      */
     public function getAll()
     {
-        $request = "SELECT * FROM {$this->table_name}";
+        $request = "SELECT * FROM {$this->table_name} LIMIT 5";
         $result  = $this->mysql->query($request);
 
         if ($result->num_rows > 0) {
@@ -107,4 +107,53 @@ class Bd
 
         return $data;
     }
+
+    /**
+     * Поиск по неточному соответствию
+     *
+     * @param $table_name
+     * @param $td
+     * @param $like
+     *
+     * @return array
+     */
+    public function getAllByLike($table_name, $td, $like)
+    {
+        $request = "SELECT * FROM {$table_name} WHERE {$td} LIKE '{$like}%' ";
+        $result  = $this->mysql->query($request);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        } else {
+            $data = [];
+        }
+
+        return $data;
+    }
+
+    /**
+     * Получение кол-ва записей
+     *
+     * @param $table_name
+     *
+     * @return mixed
+     */
+    public function getCount($table_name)
+    {
+        // формируем запрос в базу - выбрать все
+        $request = "SELECT count(*) AS total FROM {$table_name}";
+        $result  = $this->mysql->query($request);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $data = $row;
+            }
+        }
+
+        return $data['total'];
+    }
+
+
 }
