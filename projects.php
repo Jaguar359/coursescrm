@@ -29,6 +29,10 @@ require_once 'classes/classes.php';
 ?>
 
 <a href="projects_add.php">Добавить</a><br>
+
+<input type="text" class="filter f-title">
+
+<div class="result">
 <table>
     <tr>
         <td>id</td>
@@ -47,5 +51,18 @@ require_once 'classes/classes.php';
     }
     ?>
 </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+    $(document).on("keyup", ".f-title", function () {
+        var title = $(this).val();
+
+        $.get("ajax.php", {title}, function (res) {
+            $('.result').html(res);
+        });
+    });
+</script>
+
 </body>
 </html>
